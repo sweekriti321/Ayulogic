@@ -1,13 +1,15 @@
 body{
+    background-color: rgb(25, 141, 218);
     
-    
-    font-family:"poppins" ;
+    /* font-family:"Rober" ; */
     margin:0;
     padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .firstpg{
     background-color: rgb(25, 141, 218);
     color:whitesmoke;
+
 }
 ul{
     color:rgb(85, 77, 77);
@@ -72,16 +74,22 @@ li:hover{
     border:1px solid white;
     
 }
+.secpg{
+    background-color: antiquewhite;
+    margin-bottom: 0px;
+}
 .screenimg{
     width:700px;
   height:auto;
   
 }
 .sech1txt{
+    margin-top:0px;
     color:rgb(25, 141, 218);
-    font-weight: 900;
+    font-weight:1200 !important;
     font-size: 30px;
     text-align: center;
+    padding-top:40px;
 }
 .ics{
     padding-right: 20em;
@@ -93,7 +101,7 @@ li:hover{
 .icon{
     padding-left: 12em;
     flex:100%;
-
+     background-color: antiquewhite;
     display: flex;
     margin:0
     
@@ -135,15 +143,19 @@ li:hover{
     background-color: gold;
     padding:8px;
     cursor: pointer;
-    transition: all .4s ease-in-out;
     border-radius: 0.2cm;
     border-color:gold;
-    width: 75%;
+    width: 80%;
 }
 .rcbtn h2{
     color:white;
     font-size: 1.5rem;
     line-height: 2rem;
+}
+.thirdpg{
+   background-color: antiquewhite;
+   margin-top: 0px;
+   padding-top: 0px;;
 }
 
 .newimg img{
@@ -168,9 +180,10 @@ li:hover{
     margin-top:0;
 }
 .frthpg { 
-    background-image: linear-gradient(#00aeef ,#5c6bc0);
+    background-image: linear-gradient(rgb(25, 141, 218),#5c6bc0);
     padding-bottom: 20px;
     padding-top:0;
+    margin-top:0px;
 }
 .frthpg h1{
     font-size: 50px;
@@ -196,9 +209,83 @@ li:hover{
     background-color:rgb(25, 141, 218) ;
     color:whitesmoke;
     background-image: url(laptop.png);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 30rem;
+    
 }
 .fifpg h1{
    text-align: center;
    font-weight:900 !important;
    
 }
+.frm{
+    justify-content: center;
+    display: flex;
+    padding: 20px;
+    margin-top:15px;
+    margin-left: 60px;
+    flex-wrap: wrap;
+    max-width: 80%;
+    align-items: flex-start;
+}
+.frm h4{
+    padding:10px;
+}
+.forms input,textarea{
+    padding:12px 20px;
+    margin:8px 0px;
+}
+
+form{
+    display:flex;
+    padding:20px;
+    flex-direction: column;
+    
+}
+
+.grid-container {
+    display: flex;
+    
+    width:70px;
+  }
+  .griditem {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px rgba(0, 0, 0, 0.8);
+    padding: 5px;
+    
+    
+  }
+  .griditem img{
+    width:20px;
+  }
+  .btnsub{
+    background-color: rgb(161, 152, 152);
+    color: white;
+    border-radius:0.25rem;
+    
+   
+    padding-left:1.5rem;
+    padding-right:1.5rem ;
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+    font-size:16px;
+    line-height:24px;
+    box-sizing: border-box;
+    
+    height:auto;
+  }
+ footer{
+    background-image: url(https://realhrsoft.com/images/homepage/footer-bg.svg);
+    display:flex;
+    align-items: flex-start;
+    
+ }
+ footer .footing{
+    display:block;
+    align-items: center;
+    padding:20px;
+ }
+ .foot img{
+    width:200px;
+ }
