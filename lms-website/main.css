@@ -1,0 +1,45 @@
+
+.navicon{
+    padding-top: 0px;
+    margin-top: -20px;
+}
+.nav1{
+    display: flex;
+    justify-content: space-evenly;
+   
+}
+.nav1 img{
+    width:10px;
+    height:auto;
+    
+    
+}
+.nav1 h6{
+    color:green;
+    border-right: 2px solid rgb(222, 208, 208) ;
+    
+}
+.nav2{
+    background-color: rgb(66, 124, 66);
+    color:aliceblue;
+    justify-content: space-between;
+    display: flex;
+    
+}
+
+.nav2 ul{
+    list-style: none;
+    display: flex;
+}
+.nav2 li{
+    padding-left: 1.2rem;
+    padding-right:30px;
+}
+.nav2 li img{
+    width:20px;
+    height:auto;   
+}
+.nav2 h1{
+    padding-left:10em;
+    font-weight: 1200;
+}
