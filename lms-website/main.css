@@ -272,6 +272,7 @@ body{
  .btnvie{
     padding-top: 40px;
     text-align: center;
+    padding-bottom:40px;
  }
  .btnvie button{
     padding:10px;
@@ -280,4 +281,64 @@ body{
  .foot{
     background-color:mediumseagreen;
     color:white;
+ }
+ .frmbtn{
+    display:flex;
+    justify-content: space-between;
+    padding: 20px;
+ }
+ .frmbtn1{
+    padding:20px;
+ }
+ .btnsub{
+    padding:10px;
+    color:mediumseagreen
+ }
+ .frm{
+    padding:10px;
+ }
+ .frmbtn .txt{
+    padding-left:100px;
+ }
+ .contacts{
+    display:flex;
+    padding-left:115px;
+    justify-content: space-between;
+    padding-bottom:100px;
+ }
+ .contacts img{
+
+ }
+ .add h5{
+    margin:0px;
+ }
+ .add p{
+    margin:0px;
+ }
+ .add1{
+    padding-right:10px;
+    margin:0;
+ }
+ .add1 p{
+    margin:0px;
+    
+ }
+ .add1 h4{
+    margin:0px;
+ }
+ .lahr hr{
+    color: antiquewhite;
+    width: 100%;
+ }
+ .last{
+    display: flex;
+    padding-left:150px;
+ }
+ .icons{
+    padding-left:120px;
+    justify-content: space-between;
+ }
+ .icons i{
+    padding:10px;
+    margin:0;
  }
