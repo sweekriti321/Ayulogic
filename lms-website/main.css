@@ -1,4 +1,7 @@
-
+body{
+    margin:0;
+    padding:0;
+}
 .navicon{
     padding-top: 0px;
     margin-top: -20px;
@@ -19,27 +22,262 @@
     border-right: 2px solid rgb(222, 208, 208) ;
     
 }
+.telm{
+    display: flex;
+    justify-content: space-between;
+ }
+ .lor{
+   display:flex;
+   justify-content: space-between;
+ }
+
 .nav2{
-    background-color: rgb(66, 124, 66);
+    background-color: mediumseagreen;
     color:aliceblue;
     justify-content: space-between;
     display: flex;
+    margin-top:-20px;
     
 }
 
 .nav2 ul{
     list-style: none;
     display: flex;
+    padding-top:3px;
 }
 .nav2 li{
     padding-left: 1.2rem;
     padding-right:30px;
+    
 }
 .nav2 li img{
     width:20px;
     height:auto;   
 }
 .nav2 h1{
-    padding-left:10em;
-    font-weight: 1200;
+    padding-left:2em;
+    font-weight: 1200 !important;
+    padding-bottom: 5px;
 }
+.bg{
+    opacity:0.7;
+    background-image: url(std.jpg) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top:100px;
+    padding-left:150px;
+    padding-bottom: 100px;;
+    
+    }
+.bg h2{
+    color:rgb(4, 107, 50);
+    font-weight:900;
+}
+.bg p{
+    color:rgb(0, 0, 0);
+    
+} 
+.bg button{
+    background-color:rgb(19, 95, 53);
+    border-radius: 5px;
+    border-color: rgb(14, 56, 25);
+} 
+.secpg{
+    background-color: mediumseagreen;
+    margin-top:-20px;
+    padding-left:20px
+    
+}
+.sectitle h2{
+    color:white;
+    text-align: center;
+    padding-top:20px
+}
+.sectitle p{
+    color:white;
+    text-align: center;
+}
+.secicon1{
+    justify-content: center;
+    display: flex;
+    padding: 20px;
+    margin-top:15px;
+    margin-left: 60px;
+    flex-wrap: wrap;
+    max-width: 80%;
+    align-items: flex-start;
+    justify-content: space-between;
+     
+    
+    
+}
+
+.secicon h4{
+    color:white;
+    text-align: justify;
+    
+}
+.secicon p{
+    color:white;
+    text-align:justify;
+}
+.secicon img{
+    height:auto;
+    width:50px; 
+    margin: 0px 15px 15px 0px;
+    float:left; 
+    
+}
+
+.thirdpg h2{
+   color:mediumseagreen;
+}
+.thirdpg p{
+    color:gray;
+}
+.thrdicon1{
+    justify-content: center;
+    display: flex;
+    padding: 20px;
+    margin-top:15px;
+    margin-left: 60px;
+    flex-wrap: wrap;
+    max-width: 80%;
+    align-items: flex-start;
+    justify-content: space-between;
+     
+    padding-left:60px;
+    
+}
+.thrdicon img{
+    height:auto;
+    width:50px; 
+    margin: 0px 15px 15px 0px;
+    float:left; 
+    
+}
+.thrdpg1{
+ padding-left:10em;
+}
+.frthpg1{
+    padding-left:10em;
+}
+.frthpg h2{
+    color:mediumseagreen;
+ }
+ .frthpg p{
+     color:gray;
+ }
+ 
+ .newimg .images {
+    height:auto;
+    width:200px;
+ }
+ .newimg .secbtn{
+    background-color:mediumseagreen;
+    border-radius: 5px;
+    border-color: rgb(40, 172, 75);
+ }
+ .card{
+    padding:22px;
+ }
+
+ .card:hover{
+    border:1px solid black;
+    cursor: pointer;
+    
+ }
+ 
+ .course{
+    display:flex;
+    flex-wrap: wrap;
+ }
+ .newimg{
+    display:flex;
+ }
+ .price{
+    color:mediumseagreen;
+    padding-left:100px;
+ }
+ .busi{
+    display:flex;
+    align-items: center;
+    padding-right:2px;
+ }
+ .checked{
+    color:orange;
+ }
+ .ffth{
+    background-color:mediumseagreen ;
+    margin-top:30px;
+    padding-left:15em;
+    padding-top:5em;
+    display:flex;
+    align-items: center;
+    padding-bottom:30px;
+ }
+ .ffth h3{
+    color:white;
+ }
+ .ffth h2{
+    color:white;
+ }
+ .ffth p{
+    color:white
+ }
+ .ffbtn{
+    padding:10px;
+ }
+ .ffth .onimg{
+    padding-left: 10em;
+    
+ }
+ .sixpg h3{
+    text-align: center;
+    color:mediumseagreen;
+    
+ }
+ .sixpg{
+    padding-bottom: 10px;
+ }
+ .news{
+    display:flex;
+    flex-wrap: wrap;
+    padding-top:3px;
+    
+ }
+ .newii{
+    display:flex;  
+    padding-left:20em;
+    padding-top:50px;
+ }
+ .card1{
+    padding:2px;
+    padding-bottom: 0;
+    padding-top:3px;
+ }
+ .card1:hover{
+    border:1px solid black;
+    cursor: pointer;
+ }
+  .imges{
+    padding-left:30px;
+ }
+ .sixpg hr{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(18, 110, 53, 0.75), rgba(0, 0, 0, 0));
+    width: 20%;
+ }
+ .btnvie{
+    padding-top: 40px;
+    text-align: center;
+ }
+ .btnvie button{
+    padding:10px;
+    border-radius: 1px;
+ }
+ .foot{
+    background-color:mediumseagreen;
+    color:white;
+ }
