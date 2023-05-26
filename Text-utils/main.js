@@ -1,23 +1,30 @@
-textArea();
-upBtn();
-lowBtn();
-nocharBtn();
-noWordsBtn();
-noSpaceBtn();
-clearBtn();
+
+var container = btnContainer();
+document.body.appendChild(container);
+var btnc = buttonContainer();
+container.appendChild(textArea());
+container.appendChild(btnc);
+btnc.appendChild(upBtn());
+btnc.appendChild(lowBtn());
+btnc.appendChild(noSpaceBtn());
+btnc.appendChild(nocharBtn());
+btnc.appendChild(noWordsBtn());
+btnc.appendChild(clearBtn());
+
+
 ptag();
 ptag1();
+
 function btnContainer() {
   let container = document.createElement("div");
   container.id = "current";
-  document.body.appendChild(container);
+ 
   return container;
 }
 function buttonContainer() {
   let cont = document.createElement("div");
   cont.id = "new";
-  let btnc = btnContainer();
-  btnc.appendChild(cont);
+
   return cont;
 }
 function textArea() {
@@ -33,8 +40,8 @@ function textArea() {
   txtarea.addEventListener("input", function () {
     ptaglen(); ptagwor();
   });
-  let txt = btnContainer();
-  txt.appendChild(txtarea);
+  return txtarea;
+  
 }
 function upBtn() {
   let upbtn = document.createElement("button");
@@ -45,8 +52,7 @@ function upBtn() {
   upbtn.onclick = function () {
     uptxtdisplay();
   };
-  let upperbtn = buttonContainer();
-  upperbtn.appendChild(upbtn);
+  return upbtn;
 }
 function uptxtdisplay() {
   let uptxt = document.querySelector("textarea").value;
@@ -63,8 +69,7 @@ function lowBtn() {
   lowbtn.onclick = function () {
     lowtxtdisplay();
   };
-  let lobtn = buttonContainer();
-  lobtn.appendChild(lowbtn);
+  return lowbtn;
 }
 function lowtxtdisplay() {
   let lowtxt = document.querySelector("textarea").value;
@@ -81,8 +86,7 @@ function nocharBtn() {
   nochar.onclick = function () {
     chara();
   };
-  let charbtn = buttonContainer();
-  charbtn.appendChild(nochar);
+  return nochar;
 }
 function chara() {
   let character = document.querySelector("textarea").value;
@@ -126,9 +130,7 @@ function noWordsBtn() {
     word();
   };
   document.createElement("p").innerHTML = "Number of Words";
-  let wbtn = buttonContainer();
-
-  wbtn.appendChild(noword);
+  return noword;
 }
 function word() {
   let wor = document.querySelector("textarea").value;
@@ -145,8 +147,7 @@ function noSpaceBtn() {
   nospace.onclick = function () {
     spaces();
   };
-  let sbtn = buttonContainer();
-  sbtn.appendChild(nospace);
+  return nospace;
 }
 function spaces() {
   let spc = document.querySelector("textarea").value;
@@ -162,8 +163,7 @@ function clearBtn() {
   clear.onclick = function () {
     clearAll();
   };
-  let cbtn = buttonContainer();
-  cbtn.appendChild(clear);
+  return clear;
 }
 function clearAll() {
   let cl = document.querySelector("textarea").value;
