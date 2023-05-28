@@ -1,172 +1,260 @@
+let textContainer = buildTextContainer();
+let buttonElement = buttonContainerElement();
 
-var container = btnContainer();
-document.body.appendChild(container);
-var btnc = buttonContainer();
-container.appendChild(textArea());
-container.appendChild(btnc);
-btnc.appendChild(upBtn());
-btnc.appendChild(lowBtn());
-btnc.appendChild(noSpaceBtn());
-btnc.appendChild(nocharBtn());
-btnc.appendChild(noWordsBtn());
-btnc.appendChild(clearBtn());
+document.body.appendChild(textContainer);
 
+textContainer.appendChild(buildTextArea());
+textContainer.appendChild(buttonElement);
 
+buttonElement.appendChild(toUpperCaseButton());
+buttonElement.appendChild(toLowerCaseButton());
+buttonElement.appendChild(removeExtraSpaceButton());
+buttonElement.appendChild(numberOfCharactersButton());
+buttonElement.appendChild(numberOfWordsButton());
+buttonElement.appendChild(clearAllButton());
+
+// No clue what are they for
 ptag();
 ptag1();
 
-function btnContainer() {
-  let container = document.createElement("div");
-  container.id = "current";
- 
-  return container;
-}
-function buttonContainer() {
-  let cont = document.createElement("div");
-  cont.id = "new";
+function buildTextContainer() {
+  let textContainer = document.createElement("div");
+  textContainer.id = "text-container";
+  textContainer.style.display = "grid";
+  textContainer.style.justifyContent = "center"
 
-  return cont;
+  return textContainer;
 }
-function textArea() {
-  let txtarea = document.createElement("textarea");
-  txtarea.classList.add("area");
-  txtarea.style.width = "75rem";
-  txtarea.style.height = "15rem";
-  txtarea.style.borderColor = "black";
-  txtarea.style.backgroundColor = "mediumseagreen";
-  txtarea.style.border = "none";
-  txtarea.style.alignItems = "center";
-  txtarea.style.marginLeft = "20px";
-  txtarea.addEventListener("input", function () {
-    ptaglen(); ptagwor();
+
+function buttonContainerElement() {
+  let buttonContainer = document.createElement("div");
+  buttonContainer.id = "new";
+  buttonContainer.style.display = "flex";
+  buttonContainer.style.marginLeft = "50px"
+  buttonContainer.style.marginRight = "50px"
+
+  buttonContainer.style.justifyContent = "space-around"
+
+  return buttonContainer;
+}
+
+function buildTextArea() {
+  let textarea = document.createElement("textarea");
+
+  textarea.classList.add("area");
+  textarea.style.width = "75rem";
+  textarea.style.height = "15rem";
+  textarea.style.backgroundColor = "mediumseagreen";
+  textarea.style.border = "2px solid black";
+  textarea.style.borderRadius = "8px";
+  textarea.style.margin = "20px";
+
+  textarea.addEventListener("input", function () {
+    characterCountContainer();
+    wordCountContainer();
   });
-  return txtarea;
-  
-}
-function upBtn() {
-  let upbtn = document.createElement("button");
-  upbtn.classList.add("upper");
-  upbtn.style.padding = "10px";
-  upbtn.style.cursor = "pointer";
-  upbtn.innerHTML = "UpperCase";
-  upbtn.onclick = function () {
-    uptxtdisplay();
-  };
-  return upbtn;
-}
-function uptxtdisplay() {
-  let uptxt = document.querySelector("textarea").value;
-  uptxt = uptxt.toUpperCase();
-  document.querySelector("textarea").value = uptxt;
+
+  return textarea;
 }
 
-function lowBtn() {
-  let lowbtn = document.createElement("button");
-  lowbtn.classList.add("lower");
-  lowbtn.style.padding = "10px";
-  lowbtn.style.cursor = "pointer";
-  lowbtn.innerHTML = "Lowercase";
-  lowbtn.onclick = function () {
-    lowtxtdisplay();
+function characterCountContainer() {
+  let charCountEle = document.createElement("p");
+  charCountEle.id = "character-count-element";
+
+  document.body.appendChild(charCountEle);
+
+  var characterCount = characterCounter();
+  document.querySelector("#character-count-element").innerHTML = characterCount;
+}
+
+function characterCounter() {
+  let charactersInTextArea = document.querySelector("textarea").value;
+
+  return charactersInTextArea.length;
+}
+
+function wordCountContainer() {
+  let wordCountEle = document.createElement("p");
+  wordCountEle.id = "word-count-element";
+
+  document.body.appendChild(wordCountEle);
+
+  var wordCount = wordCounter();
+  document.querySelector("#word-count-element").innerHTML = wordCount;
+}
+
+function wordCounter() {
+  let textAreaContent = document.querySelector("textarea").value;
+
+  return textAreaContent.trim().split(/\s+/).length;
+}
+
+function toUpperCaseButton() {
+  let upperCaseButton = document.createElement("button");
+
+  upperCaseButton.classList.add("upper-case-converter");
+  upperCaseButton.style.padding = "10px";
+  upperCaseButton.style.cursor = "pointer";
+  upperCaseButton.style.margin = "10px";
+  upperCaseButton.style.backgroundColor = "#ff5733"
+  upperCaseButton.style.border = "2px solid black"
+  upperCaseButton.style.borderRadius = "8px";
+  upperCaseButton.style.width = "150px"
+
+  upperCaseButton.innerHTML = "UPPERCASE";
+
+  upperCaseButton.onclick = function () {
+    upperCaseTextDisplay();
   };
-  return lowbtn;
+
+  return upperCaseButton;
 }
-function lowtxtdisplay() {
-  let lowtxt = document.querySelector("textarea").value;
-  lowtxt = lowtxt.toLowerCase();
-  document.querySelector("textarea").value = lowtxt;
+
+function upperCaseTextDisplay() {
+  let textAreaContent = document.querySelector("textarea").value;
+
+  document.querySelector("textarea").value = textAreaContent.toUpperCase();
 }
-function nocharBtn() {
-  let nochar = document.createElement("button");
-  nochar.classList.add("charac");
-  nochar.style.padding = "10px";
-  nochar.style.cursor = "pointer";
-  nochar.innerHTML = "Number of Characters";
+
+function toLowerCaseButton() {
+  let lowerCaseButton = document.createElement("button");
+
+  lowerCaseButton.classList.add("lower");
+  lowerCaseButton.style.padding = "10px";
+  lowerCaseButton.style.cursor = "pointer";
+  lowerCaseButton.style.margin = "10px";
+  lowerCaseButton.style.backgroundColor = "#ff5733"
+  lowerCaseButton.style.border = "2px solid black"
+  lowerCaseButton.style.borderRadius = "8px";
+  lowerCaseButton.style.width = "150px";
+
+  lowerCaseButton.innerHTML = "lowercase";
+
+  lowerCaseButton.onclick = function () {
+    lowerCaseTextDisplay();
+  };
+
+  return lowerCaseButton;
+}
+
+function lowerCaseTextDisplay() {
+  let textAreaContent = document.querySelector("textarea").value;
+
+  document.querySelector("textarea").value = textAreaContent.toLowerCase();
+}
+
+function removeExtraSpaceButton() {
+  let spaceRemoveButton = document.createElement("button");
+
+  spaceRemoveButton.classList.add("extra-space-remover");
+  spaceRemoveButton.style.padding = "10px";
+  spaceRemoveButton.style.cursor = "pointer";
+  spaceRemoveButton.style.margin = "10px";
+  spaceRemoveButton.style.backgroundColor = "#ff5733"
+  spaceRemoveButton.style.border = "2px solid black"
+  spaceRemoveButton.style.borderRadius = "8px";
+  spaceRemoveButton.style.width = "160px";
+
+  spaceRemoveButton.innerHTML = "Remove Extra Spaces";
+
+  spaceRemoveButton.onclick = function () {
+    extraSpaceRemover();
+  };
+
+  return spaceRemoveButton;
+}
+
+function extraSpaceRemover() {
+  let textAreaContent = document.querySelector("textarea").value;
+
+  document.querySelector("textarea").value = textAreaContent
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function numberOfCharactersButton() {
+  let totalCharactersButton = document.createElement("button");
+
+  totalCharactersButton.classList.add("number-of-characters");
+  totalCharactersButton.style.padding = "10px";
+  totalCharactersButton.style.cursor = "pointer";
+  totalCharactersButton.innerHTML = "Number of Characters";
+  totalCharactersButton.style.margin = "10px";
+  totalCharactersButton.style.backgroundColor = "#ff5733"
+  totalCharactersButton.style.border = "2px solid black"
+  totalCharactersButton.style.borderRadius = "8px";
+  totalCharactersButton.style.width = "160px";
+
   document.createElement("p").innerHTML = "Number of Characters";
-  nochar.onclick = function () {
-    chara();
+
+  totalCharactersButton.onclick = function () {
+    characterCounter();
   };
-  return nochar;
+
+  return totalCharactersButton;
 }
-function chara() {
-  let character = document.querySelector("textarea").value;
-  character = character.length;
-  document.querySelector("#tagplen").innerHTML = character;
+
+function numberOfWordsButton() {
+  let totalWordsButton = document.createElement("button");
+
+  totalWordsButton.classList.add("number-of-words");
+  totalWordsButton.style.padding = "10px";
+  totalWordsButton.style.cursor = "pointer";
+  totalWordsButton.style.margin = "10px";
+  totalWordsButton.style.backgroundColor = "#ff5733"
+  totalWordsButton.style.border = "2px solid black"
+  totalWordsButton.style.borderRadius = "8px";
+  totalWordsButton.style.width = "160px";
+
+  totalWordsButton.innerHTML = "Number of Words";
+
+  totalWordsButton.onclick = function () {
+    wordCounter();
+  };
+
+  document.createElement("p").innerHTML = "Number of Words";
+  return totalWordsButton;
 }
+
+function clearAllButton() {
+  let clearAllButtonElement = document.createElement("button");
+
+  clearAllButtonElement.classList.add("clear-all");
+  clearAllButtonElement.style.padding = "10px";
+  clearAllButtonElement.style.cursor = "pointer";
+  clearAllButtonElement.style.margin = "10px";
+  clearAllButtonElement.style.backgroundColor = "#ff5733"
+  clearAllButtonElement.style.border = "2px solid black"
+  clearAllButtonElement.style.borderRadius = "8px";
+  clearAllButtonElement.style.width = "160px";
+
+  clearAllButtonElement.innerHTML = "Clear Screen";
+
+  clearAllButtonElement.onclick = function () {
+    clearAll();
+  };
+
+  return clearAllButtonElement;
+}
+
+function clearAll() {
+  document.querySelector("textarea").value = "";
+  document.querySelector("#word-count-element").innerHTML = 0;
+  document.querySelector("#character-count-element").innerHTML = 0;
+}
+
 function ptag() {
   let tag = document.createElement("p");
   tag.id = "tagp";
   tag.innerHTML = "Length";
-  let ptagp = btnContainer();
+  let ptagp = buildTextContainer();
   ptagp.appendChild(tag);
 }
-function ptaglen() {
-  let taglen = document.createElement("p");
-  taglen.id = "tagplen";
-  document.body.appendChild(taglen);
-  chara();
-}
+
 function ptag1() {
   let tag1 = document.createElement("p");
   tag1.id = "tagp1";
   tag1.innerHTML = "Words";
-  let ptagp1 = btnContainer();
+  let ptagp1 = buildTextContainer();
   ptagp1.appendChild(tag1);
-}
-function ptagwor() {
-  let tagwor = document.createElement("p");
-  tagwor.id = "tagpwor";
-  document.body.appendChild(tagwor);
-  word();
-}
-
-function noWordsBtn() {
-  let noword = document.createElement("button");
-  noword.classList.add("words");
-  noword.style.padding = "10px";
-  noword.style.cursor = "pointer";
-  noword.innerHTML = "Number of Words";
-  noword.onclick = function () {
-    word();
-  };
-  document.createElement("p").innerHTML = "Number of Words";
-  return noword;
-}
-function word() {
-  let wor = document.querySelector("textarea").value;
-  wor = wor.trim().split(/\s+/).length;
-  document.querySelector("#tagpwor").innerHTML = wor;
-}
-
-function noSpaceBtn() {
-  let nospace = document.createElement("button");
-  nospace.classList.add("space");
-  nospace.style.padding = "10px";
-  nospace.style.cursor = "pointer";
-  nospace.innerHTML = "Remove Spaces";
-  nospace.onclick = function () {
-    spaces();
-  };
-  return nospace;
-}
-function spaces() {
-  let spc = document.querySelector("textarea").value;
-  spc = spc.replace(/\s+/g, " ");
-  document.querySelector("textarea").value = spc;
-}
-function clearBtn() {
-  let clear = document.createElement("button");
-  clear.classList.add("space");
-  clear.style.padding = "10px";
-  clear.style.cursor = "pointer";
-  clear.innerHTML = "Clear Screen";
-  clear.onclick = function () {
-    clearAll();
-  };
-  return clear;
-}
-function clearAll() {
-  let cl = document.querySelector("textarea").value;
-  cl = " ";
-  document.querySelector("textarea").value = cl;
 }
