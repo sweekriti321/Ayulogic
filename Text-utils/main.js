@@ -13,7 +13,7 @@ buttonElement.appendChild(numberOfCharactersButton());
 buttonElement.appendChild(numberOfWordsButton());
 buttonElement.appendChild(clearAllButton());
 
-// No clue what are they for
+
 ptag();
 ptag1();
 
