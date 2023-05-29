@@ -1,8 +1,5 @@
 var word_arr = ["Snake" ,"Elephant" , "Cat"];
 var word = word_arr[Math.floor(Math.random()*word_arr.length)];
-// var guessedLetters = [] ; 
-// var maxIncorrect = 8;
-// var incorrectGuessedLetters = [];
 
 
 let mainContainer = Container();
@@ -13,10 +10,6 @@ let container = Container1();
 mainContainer.appendChild(container);
 container.appendChild(ptag());
 container.appendChild(startButton());
-// startGame();
-// displayWord();
-// checkWin();
-// guessLetter();
 
 
 function ptag() {
@@ -61,6 +54,7 @@ function startButton(){
 }
 
 function Game(){
+
 var answerArray = [];
  for (var i = 0; i < word.length; i++) {
  answerArray[i] = "_";
@@ -71,14 +65,24 @@ var remainingLetters = word.length;
 
 while(remainingLetters > 0){
   alert(answerArray.join(" "));
+    let arrayLetter = word_arr[i].split('');
+    
 
     var guess = prompt("Guess a letter or click cancel to exit");
+    
     if(guess==null){
         break;
     }
     else if(guess.length!==1){
         alert("please enter a single letter");
-    }else{
+    }
+    // else if(guess == enteredLetter){
+    //     alert("Correct Letter");
+    // }
+    // else if(guess !== enteredLetter){
+    //     alert("Incorrect Letter")
+    // }
+    else{
         for(var j; j<word.length;j++){
             answerArray[j] = guess;
             remainingLetters;
@@ -88,59 +92,5 @@ while(remainingLetters > 0){
 alert(answerArray.join(" "));
 alert("the answer was " + word);
 }
-
-// function displayWord(){
-//     var display=' ';
-//     for(var i = 0; i<word[i].length ; i++){
-//         // word_arr[a].split('');
-//         // a===a.substring(0,1).toUpperCase||a===a.substring(0,1).toLowerCase();
-//         if(guessedLetters.includes(word_arr[i]) ){
-//             display += word[i];
-//         }else{
-//            display +="_";
-//         }
-//         {
-//             display += ' ';
-//         }
-//         return display;
-//     }
-    
-// }
-// function checkWin(){
-//     for(var i = 0; i<word[i].length ; i++){
-//         if(!guessedLetters.includes(word_arr[i])){
-//             return false;
-//         }
-//         {
-//             return true;
-//         }
-//     }
-// }
-// function guessLetter(letter){
-//   if(guessedLetters.includes(letter) || incorrectGuessedLetters.includes(letter)){
-//     document.querySelector('#message').textContent="Already guessed";
-//     return ;
-//   }
-  
-//     if(word.includes(letter)){
-//         guessedLetters.push(letter);
-//         document.querySelector('#message').textContent = "Correct";
-//     }else{
-//         incorrectGuessedLetters.push(letter);
-//         document.querySelector('#message').textContent = "InCorrect";
-//     }
-//     displayWord();
-   
-//     if(checkWin()){
-//         document.querySelector('#message').textContent = "You Won..";
-//     }
-//     else if(incorrectGuessedLetters.length === maxIncorrect){
-//         document.querySelector('#message').textContent = "Game over.." + word;
-//     }
-// }
-// function startGame(){
-//     document.querySelector('#message').textContent = "Welcome..";
-//     displayWord();
-// }
 
 
