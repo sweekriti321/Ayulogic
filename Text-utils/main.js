@@ -14,14 +14,14 @@ buttonElement.appendChild(numberOfWordsButton());
 buttonElement.appendChild(clearAllButton());
 
 
-ptag();
-ptag1();
+
 
 function buildTextContainer() {
   let textContainer = document.createElement("div");
   textContainer.id = "text-container";
   textContainer.style.display = "grid";
-  textContainer.style.justifyContent = "center"
+  textContainer.style.justifyContent = "center";
+  textContainer.style.paddingTop = '100px';
 
   return textContainer;
 }
