@@ -129,7 +129,6 @@ function letterDisplayEle() {
   letterContainer.style.fontWeight = "bold";
   letterContainer.style.fontSize = "24px";
   letterContainer.style.padding = "10px";
-
   return letterContainer;
 }
 
