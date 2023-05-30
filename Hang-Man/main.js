@@ -20,6 +20,53 @@ mainContainer.appendChild(container);
 container.appendChild(ptag());
 container.appendChild(startButton());
 
+document.addEventListener("keydown", (event) => {
+  var pressedKeyValue = event.key.toUpperCase();
+  var pressedKey = event.key.charCodeAt();
+
+  if (
+    pressedKey < 64 ||
+    pressedKey > 123 ||
+    (pressedKey > 91 && pressedKey < 96)
+  ) {
+    noticeDisplayer("Only alphabets are accepted");
+    return ; 
+  }
+
+  if (pressedWord.includes(pressedKeyValue) || incorrectWord.includes(pressedKeyValue)) {
+    noticeDisplayer("This Alphabet has already been guessed");
+    return ;
+  }
+
+  if (correctWord.includes(pressedKeyValue)) {
+    var positions = getAllIndexes(correctWord, pressedKeyValue);
+
+    positions.forEach((position) => {
+      pressedWord[position] = pressedKeyValue;
+      correctWord[position] = "";
+    });
+
+    var wordDisplayExisting = document.querySelector("#word-container");
+    container.removeChild(wordDisplayExisting);
+    container.appendChild(wordDisplay());
+
+    matchCount = matchCount + positions.length;
+    console.log(matchCount);
+    if (matchCount == correctWord.length) {
+      gameWinDisplay();
+    }
+  } else {
+    incorrectWord.push(pressedKeyValue);
+    noticeDisplayer("Oops!, Wrong Guesses made");
+    chances = chances - 1;
+  }
+
+  if (chances <= 0) {
+    gameOverDisplay();
+
+  }
+  
+});
 
 document.addEventListener("keydown", (event) => {
   var pressedKeyValue = event.key.toUpperCase();
@@ -131,7 +178,6 @@ function letterDisplayEle() {
   letterContainer.style.fontWeight = "bold";
   letterContainer.style.fontSize = "24px";
   letterContainer.style.padding = "10px";
-
   return letterContainer;
 }
 
@@ -242,7 +288,13 @@ function canvas(){
   context.strokeStyle = "#000";
   context.lineWidth = 2;
 };
-
+function head(){
+  myStickman = document.getElementById("stickman");
+  context = myStickman.getContext('2d');
+  context.beginPath();
+  context.arc(60, 25, 10, 0, Math.PI*2, true);
+  context.stroke();
+}
 
 function draw($pathFromx, $pathFromy, $pathTox, $pathToy) {
 
