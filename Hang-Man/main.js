@@ -1,3 +1,4 @@
+
 const word_Arr = ["SNAKE", "CAT", "ELEPHANT"];
 
 var letterDisplayArr = [];
@@ -282,4 +283,5 @@ function leftLeg() {
 };
 
 const drawArray = [rightLeg, leftLeg, rightArm, leftArm,  torso,  head, frame4, frame3, frame2, frame1]; 
+
 

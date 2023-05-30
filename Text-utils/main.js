@@ -1,10 +1,11 @@
+
 let textContainer = buildTextContainer();
 let buttonElement = buttonContainerElement();
-
 document.body.appendChild(textContainer);
-
+textContainer.appendChild(title());
 textContainer.appendChild(buildTextArea());
 textContainer.appendChild(buttonElement);
+
 
 buttonElement.appendChild(toUpperCaseButton());
 buttonElement.appendChild(toLowerCaseButton());
@@ -36,6 +37,13 @@ function buttonContainerElement() {
   buttonContainer.style.justifyContent = "space-around"
 
   return buttonContainer;
+}
+function title(){
+  let tiTle = document.createElement('h1');
+  const txtnode = document.createTextNode('Text - Utils');
+  tiTle.style.textAlign = 'center';
+  tiTle.appendChild(txtnode);
+  return tiTle;
 }
 
 function buildTextArea() {
