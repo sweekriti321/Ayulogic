@@ -1,11 +1,13 @@
 
-const word_Arr = ["SNAKE", "CAT", "ELEPHANT"];
+const word_Arr = ["SNAKE", "CAT", "ELEPHANT" , "LION" , "PARROT"];
+const word = word_Arr[Math.floor(Math.random() * 5)]; //wordselector
+  
 
 var letterDisplayArr = [];
 var correctWord = [];
 var pressedWord = [];
 var incorrectWord = [];
-let chances = 11;
+let chances = 10;
 let matchCount = 0;
 
 let mainContainer = Container();
@@ -19,6 +21,8 @@ let container = Container();
 mainContainer.appendChild(container);
 container.appendChild(ptag());
 container.appendChild(startButton());
+
+
 
 document.addEventListener("keydown", (event) => {
   var pressedKeyValue = event.key.toUpperCase();
@@ -61,7 +65,7 @@ document.addEventListener("keydown", (event) => {
     chances = chances - 1;
   }
 
-  if (chances <= 0) {
+  if (chances <= 1) {
     gameOverDisplay();
 
   }
@@ -150,6 +154,7 @@ function startButton() {
     container.appendChild(startmessage);
     wordSelector();
     container.appendChild(wordDisplay());
+    container.appendChild(hintBtn());
     
 
   };
@@ -157,6 +162,33 @@ function startButton() {
   return strtbtn;
   
 }
+
+function hintBtn(){
+  let hntbtn = document.createElement('button');
+  hntbtn.innerHTML = "Hint";
+  hntbtn.style.padding = '10px';
+  hntbtn.style.backgroundColor = 'black';
+  hntbtn.style.color = 'white';
+  hntbtn.onclick = function() {
+   Hint();
+  }
+  return hntbtn;
+    
+}
+;
+function Hint(){
+  let hintWord = word[Math.floor(Math.random * word.length)]; 
+
+  let clues = document.createElement('h2');
+  let clue = ["Reptile" , "Domestic , drinks milk" , "Giant with trunk" , "King of Jungle" , "Green Bird, speaks alot"]
+  for(i = 0 ; i<clue.length ; i++){
+    if(word_Arr.indexOf(word) == i ){
+      clues.textContent = clue[i];
+    }
+  }
+  container.appendChild(clues);
+}
+ 
 
 function startGameBtnClick() {
   let startMessage = ptag();
@@ -167,7 +199,7 @@ function startGameBtnClick() {
 }
 
 function wordSelector() {
-  const word = word_Arr[Math.floor(Math.random() * 3)];
+  
   correctWord = word.split("");
   correctWord.forEach((corrLeter) => pressedWord.push("__"));
 }
@@ -264,7 +296,7 @@ function noticeDisplayer(message) {
   setTimeout(function () {
     mainContainer.removeChild(notice);
   }, 1500);
-  if (chances <= 0) {
+  if (chances <= 1) {
     gameOverDisplay();
   } 
   else {
@@ -340,4 +372,3 @@ function leftLeg() {
 };
 
 const drawArray = [rightLeg, leftLeg, rightArm, leftArm,  torso,  head, frame4, frame3, frame2, frame1]; 
-
