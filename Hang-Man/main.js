@@ -7,7 +7,7 @@ var letterDisplayArr = [];
 var correctWord = [];
 var pressedWord = [];
 var incorrectWord = [];
-let chances = 10;
+let chances = 9;
 let matchCount = 0;
 
 let mainContainer = Container();
@@ -18,12 +18,14 @@ document.body.appendChild(mainContainer);
 mainContainer.appendChild(Title());
 
 let container = Container();
+
 mainContainer.appendChild(container);
 container.appendChild(ptag());
 container.appendChild(startButton());
 
 
 
+
 document.addEventListener("keydown", (event) => {
   var pressedKeyValue = event.key.toUpperCase();
   var pressedKey = event.key.charCodeAt();
@@ -72,54 +74,7 @@ document.addEventListener("keydown", (event) => {
   
 });
 
-document.addEventListener("keydown", (event) => {
-  var pressedKeyValue = event.key.toUpperCase();
-  var pressedKey = event.key.charCodeAt();
 
-  if (
-    pressedKey < 64 ||
-    pressedKey > 123 ||
-    (pressedKey > 91 && pressedKey < 96)
-  ) {
-    noticeDisplayer("Only alphabets are accepted");
-    return ; 
-  }
-
-  if (pressedWord.includes(pressedKeyValue) || incorrectWord.includes(pressedKeyValue)) {
-    noticeDisplayer("This Alphabet has already been guessed");
-    return ;
-  }
-
-  if (correctWord.includes(pressedKeyValue)) {
-    var positions = getAllIndexes(correctWord, pressedKeyValue);
-
-    positions.forEach((position) => {
-      pressedWord[position] = pressedKeyValue;
-      correctWord[position] = "";
-    });
-
-    var wordDisplayExisting = document.querySelector("#word-container");
-    container.removeChild(wordDisplayExisting);
-    container.appendChild(wordDisplay());
-
-    matchCount = matchCount + positions.length;
-    console.log(matchCount);
-    if (matchCount == correctWord.length) {
-      gameWinDisplay();
-    }
-  } else {
-    incorrectWord.push(pressedKeyValue);
-    noticeDisplayer("Oops!, Wrong Guesses made");
-    chances = chances - 1;
-  }
-
-  if (chances <= 1) {
-    gameOverDisplay();
-
-  } 
-  
-  
-});
 
 function ptag() {
   let tag = document.createElement("p");
@@ -153,8 +108,11 @@ function startButton() {
     container.removeChild(strtbtn);
     container.appendChild(startmessage);
     wordSelector();
+   
     container.appendChild(wordDisplay());
     container.appendChild(hintBtn());
+    container.appendChild(ResetBtn());
+
     
 
   };
@@ -165,6 +123,7 @@ function startButton() {
 
 function hintBtn(){
   let hntbtn = document.createElement('button');
+  hntbtn.id = "hintbtn";
   hntbtn.innerHTML = "Hint";
   hntbtn.style.padding = '10px';
   hntbtn.style.backgroundColor = 'black';
@@ -179,6 +138,7 @@ function hintBtn(){
 function Hint(){
   let hintWord = word[Math.floor(Math.random * word.length)]; 
 
+
   let clues = document.createElement('h2');
   let clue = ["Reptile" , "Domestic , drinks milk" , "Giant with trunk" , "King of Jungle" , "Green Bird, speaks alot"]
   for(i = 0 ; i<clue.length ; i++){
@@ -192,6 +152,7 @@ function Hint(){
 
 function startGameBtnClick() {
   let startMessage = ptag();
+  startMessage.id = "strtgamebtn";
   startMessage.textContent = "Welcome! Hope you enjoy the game..";
   startMessage.style.fontWeight = "900";
   startMessage.style.textAlign = "center";
@@ -206,6 +167,7 @@ function wordSelector() {
 
 function letterDisplayEle() {
   let letterContainer = ptag();
+  
   letterContainer.style.border = "1px solid black";
   letterContainer.style.fontWeight = "bold";
   letterContainer.style.fontSize = "24px";
@@ -245,9 +207,12 @@ function gameOverDisplay() {
 
   let message = document.createElement("h3");
   message.textContent = "Refresh to Restart the New Game";
+  
+  
   message.style.display = "flex";
   message.style.alignItems = "center";
   message.style.justifyContent = "center";
+  
 
   document.body.removeChild(mainContainer);
   document.body.appendChild(tiTle);
@@ -265,6 +230,7 @@ function gameWinDisplay() {
   tiTle.style.textAlign = "center";
   tiTle.appendChild(txtnode);
 
+   
   let message = document.createElement("h3");
   message.textContent = "Refresh to Restart the New Game";
   message.style.display = "flex";
@@ -301,9 +267,36 @@ function noticeDisplayer(message) {
   } 
   else {
     var remainingChances = chances - 1;
-    drawArray[drawArray.length - remainingChances]();
+    drawArray[ remainingChances]();
   }
 }
+
+function ResetBtn(){
+  let rsetbtn = document.createElement('button');
+  rsetbtn.id = "resetbtn";
+  rsetbtn.innerHTML = "Reset";
+  rsetbtn.style.padding = '10px';
+  rsetbtn.style.backgroundColor = 'black';
+  rsetbtn.style.color = 'white';
+  rsetbtn.onclick = function() {
+    // container.removeChild(worddisplay);
+    container.removeChild(document.querySelector('#hintbtn'));
+    container.removeChild(document.querySelector('#resetbtn'));
+    if(document.querySelector('#message')){container.removeChild(document.querySelector('#message'));}
+    container.removeChild(document.querySelector('#word-container'));
+    container.removeChild(document.querySelector("#strtgamebtn"));
+    if(document.querySelector("h2")){container.removeChild(document.querySelector("h2"));}
+    context.clearRect(0,0,400,400);
+    pressedWord = [];
+    // container.removeChild(document.querySelector('#letterid'));
+     container.appendChild(startButton());
+     
+  }
+  return rsetbtn;
+}
+
+
+
 function head(){
   myStickman = document.getElementById("stickman");
   context = myStickman.getContext('2d');
@@ -320,13 +313,7 @@ function canvas(){
   context.strokeStyle = "#000";
   context.lineWidth = 2;
 };
-function head(){
-  myStickman = document.getElementById("stickman");
-  context = myStickman.getContext('2d');
-  context.beginPath();
-  context.arc(60, 25, 10, 0, Math.PI*2, true);
-  context.stroke();
-}
+
 
 function draw($pathFromx, $pathFromy, $pathTox, $pathToy) {
 
