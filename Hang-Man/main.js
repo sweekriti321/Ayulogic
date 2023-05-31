@@ -147,6 +147,8 @@ function Hint(){
     }
   }
   container.appendChild(clues);
+  document.querySelector("#hintbtn").style.display = "none";
+
 }
  
 
@@ -205,18 +207,19 @@ function gameOverDisplay() {
   tiTle.style.textAlign = "center";
   tiTle.appendChild(txtnode);
 
-  let message = document.createElement("h3");
-  message.textContent = "Refresh to Restart the New Game";
+  // let message = document.createElement("h3");
+  // message.textContent = "Refresh to Restart the New Game";
+
   
-  
-  message.style.display = "flex";
-  message.style.alignItems = "center";
-  message.style.justifyContent = "center";
+  // message.style.display = "flex";
+  // message.style.alignItems = "center";
+  // message.style.justifyContent = "center";
   
 
   document.body.removeChild(mainContainer);
   document.body.appendChild(tiTle);
-  document.body.appendChild(message);
+  // document.body.appendChild(message);
+  document.body.appendChild(ResetBtn());
   for (let i = 0; i < drawArray.length; i++) {
     drawArray[i]();
     }
@@ -230,7 +233,7 @@ function gameWinDisplay() {
   tiTle.style.textAlign = "center";
   tiTle.appendChild(txtnode);
 
-   
+  
   let message = document.createElement("h3");
   message.textContent = "Refresh to Restart the New Game";
   message.style.display = "flex";
@@ -279,20 +282,34 @@ function ResetBtn(){
   rsetbtn.style.backgroundColor = 'black';
   rsetbtn.style.color = 'white';
   rsetbtn.onclick = function() {
-    // container.removeChild(worddisplay);
-    container.removeChild(document.querySelector('#hintbtn'));
-    container.removeChild(document.querySelector('#resetbtn'));
-    if(document.querySelector('#message')){container.removeChild(document.querySelector('#message'));}
-    container.removeChild(document.querySelector('#word-container'));
-    container.removeChild(document.querySelector("#strtgamebtn"));
-    if(document.querySelector("h2")){container.removeChild(document.querySelector("h2"));}
-    context.clearRect(0,0,400,400);
-    pressedWord = [];
-    // container.removeChild(document.querySelector('#letterid'));
-     container.appendChild(startButton());
-     
+   Reset();
   }
   return rsetbtn;
+}
+
+function Reset(){
+  // container.removeChild(worddisplay);
+
+  if(document.querySelector('#hintbtn')){container.removeChild(document.querySelector('#hintbtn'))};
+ try{if(document.querySelector('#resetbtn')){ container.removeChild(document.querySelector('#resetbtn'))};}
+ catch{document.body.removeChild(document.querySelector('#resetbtn'))}
+  if(document.querySelector('#message')){
+
+setTimeout(function(){ 
+  container.removeChild(document.querySelector('#message'));
+}, 1500);
+  // container.removeChild(document.querySelector('#message'));
+}
+  
+  if(document.querySelector('#word-container')){container.removeChild(document.querySelector('#word-container'))};
+  if(document.querySelector('#strtgamebtn')){container.removeChild(document.querySelector("#strtgamebtn"))};
+  if(document.querySelector("h2")){container.removeChild(document.querySelector("h2"));}
+  
+  context.clearRect(0,0,400,400);
+  pressedWord = [];
+  // container.removeChild(document.querySelector('#letterid'));
+   container.appendChild(startButton());
+   
 }
 
 
