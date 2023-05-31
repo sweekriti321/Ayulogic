@@ -304,7 +304,6 @@ setTimeout(function(){
   if(document.querySelector('#word-container')){container.removeChild(document.querySelector('#word-container'))};
   if(document.querySelector('#strtgamebtn')){container.removeChild(document.querySelector("#strtgamebtn"))};
   if(document.querySelector("h2")){container.removeChild(document.querySelector("h2"));}
-  
   context.clearRect(0,0,400,400);
   pressedWord = [];
   // container.removeChild(document.querySelector('#letterid'));
