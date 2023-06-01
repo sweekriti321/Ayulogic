@@ -1,13 +1,12 @@
 let mainContainer = document.createElement("div");
-// mainContainer.style.display = "grid";
+
 
 mainContainer.style.justifyContent = "center";
 document.body.appendChild(mainContainer);
 mainContainer.appendChild(Title());
 mainContainer.appendChild(prevBtn());
 mainContainer.appendChild(nextBtn());
-// let bullet = Dot();
-// mainContainer.appendChild(Dot());
+
 
 let carouselContainer = document.createElement("div");
 carouselContainer.id = "carousel-container";
@@ -16,22 +15,22 @@ carouselContainer.style.justifyContent = "center";
 carouselContainer.style.position = "relative";
 carouselContainer.style.overflow = "hidden";
 carouselContainer.style.width = "100%";
-carouselContainer.style.height = "400px";
-carouselContainer.style.border = "2px solid black";
+carouselContainer.style.height = "550px";
+carouselContainer.style.border = "2px solid #33415c";
 
 let slideindex = 1;
 
 function fetchImg() {
-  //"
+ 
 
   fetch(
-    "https://api.unsplash.com/photos/random/?count=5&client_id=sUU-5uxLYbvBBqloArxZF1FlBvVe_ud-sHsyVsaVPPU "
+    "./img.json"
   )
     .then((response) => {
       return response.json();
     })
     .then((imgdata) => {
-      imgdata.slice(0, 5).forEach((item) => {
+      imgdata.slice(0, 7).forEach((item) => {
         let imageContainer = document.createElement("div");
         imageContainer.classList.add("mySlides");
 
@@ -39,13 +38,17 @@ function fetchImg() {
         imageDisp.src = item.urls.regular;
 
         let imgCaption = document.createElement("p");
-        const txtnode = document.createTextNode(item.alt_description);
-        imgCaption.appendChild(txtnode);
+        const txtnode = document.createTextNode((item.alt_description + " ").toUpperCase());
+        
+        
         imgCaption.style.zIndex = "1";
         imgCaption.style.position = "absolute";
-        imgCaption.style.textAlign = "center";
+        imgCaption.style.justifyContent = "center";
         imgCaption.style.fontSize = "15px";
-        imgCaption.style.padding = "8px 12px";
+        imgCaption.style.color = '#e9f5db';
+        imgCaption.style.paddingTop = '30rem';
+        imgCaption.style.paddingLeft = '30rem'
+        imgCaption.appendChild(txtnode);
 
         imageDisp.style.width = "100%";
         imageDisp.style.height = "400px";
@@ -63,7 +66,7 @@ function fetchImg() {
     })
     .then(() => {
       showSlides(slideindex);
-      automaticSlides(slideindex);
+      // automaticSlides(slideindex);
     });
 }
 
@@ -77,6 +80,8 @@ function Title() {
   let tiTle = document.createElement("h1");
   const txtnode = document.createTextNode("IMAGE CAROUSEL");
   tiTle.style.textAlign = "center";
+  tiTle.style.color = "#c2dfe3";
+  tiTle.style.textShadow = "2px 2px 5px skyblue";
   tiTle.appendChild(txtnode);
   return tiTle;
 }
@@ -86,7 +91,7 @@ function prevBtn() {
   prevbtn.style.padding = "5px";
   prevbtn.style.backgroundColor = "rgba(0,0,0,0.8)";
   prevbtn.style.position = "absolute";
-  prevbtn.style.top = "40%";
+  prevbtn.style.top = "50%";
   prevbtn.style.width = "auto";
   prevbtn.style.marginTop = "-22px";
   prevbtn.style.padding = "16px";
@@ -96,7 +101,7 @@ function prevBtn() {
   prevbtn.style.transition = " 0.6s ease";
   prevbtn.style.borderRadius = " 0 3px 3px 0";
   prevbtn.style.userSelect = " none";
-  prevbtn.style.zIndex = "+1";
+  prevbtn.style.zIndex = "2";
 
   prevbtn.onclick = function () {
     plusSlides(-1);
@@ -110,7 +115,7 @@ function nextBtn() {
   nxtbtn.style.padding = "5px";
   nxtbtn.style.backgroundColor = "rgba(0,0,0,0.8)";
   nxtbtn.style.position = "absolute";
-  nxtbtn.style.top = "40%";
+  nxtbtn.style.top = "50%";
   nxtbtn.style.width = "auto";
   nxtbtn.style.marginTop = "-22px";
   nxtbtn.style.padding = "16px";
@@ -137,25 +142,102 @@ maindotDiv.style.paddingTop = "10px";
 
 maindotDiv.style.justifyContent = "center";
 
-for (i = 0; i < 5; i++) {
-  let bullet = document.createElement("div");
-  bullet.classList.add("dot");
 
-  bullet.style.cursor = " pointer";
-  bullet.style.height = "15px";
-  bullet.style.width = "15px";
-  bullet.style.margin = "0 2px";
-  bullet.style.backgroundColor = "  #bbb";
-  bullet.style.borderRadius = "50%";
-  bullet.style.display = "inlineblock";
 
-  bullet.style.transition = "backgroundcolor 0.6s ease";
+ 
+  let bullet1 = document.createElement("div");
+  bullet1.classList.add("dot");
+  
+  bullet1.style.cursor = " pointer";
+  bullet1.style.height = "15px";
+  bullet1.style.width = "15px";
+  bullet1.style.margin = "0 2px";
+  bullet1.style.backgroundColor = "  #bbb";
+  bullet1.style.borderRadius = "50%";
+  bullet1.style.display = "inlineblock";
 
-  bullet.onclick = function () {
-    nextSlides(i);
+  bullet1.style.transition = "backgroundcolor 0.6s ease";
+
+  bullet1.onclick = function () {
+    nextSlides(1);
   };
-  maindotDiv.appendChild(bullet);
-}
+  maindotDiv.appendChild(bullet1);
+
+  let bullet2 = document.createElement("div");
+  bullet2.classList.add("dot");
+  
+  bullet2.style.cursor = " pointer";
+  bullet2.style.height = "15px";
+  bullet2.style.width = "15px";
+  bullet2.style.margin = "0 2px";
+  bullet2.style.backgroundColor = "  #bbb";
+  bullet2.style.borderRadius = "50%";
+  bullet2.style.display = "inlineblock";
+
+  bullet2.style.transition = "backgroundcolor 0.6s ease";
+
+  bullet2.onclick = function () {
+    nextSlides(2);
+  };
+  maindotDiv.appendChild(bullet2);
+
+  let bullet3 = document.createElement("div");
+  bullet3.classList.add("dot");
+  
+  bullet3.style.cursor = " pointer";
+  bullet3.style.height = "15px";
+  bullet3.style.width = "15px";
+  bullet3.style.margin = "0 2px";
+  bullet3.style.backgroundColor = "  #bbb";
+  bullet3.style.borderRadius = "50%";
+  bullet3.style.display = "inlineblock";
+
+  bullet3.style.transition = "backgroundcolor 0.6s ease";
+
+  bullet3.onclick = function () {
+    nextSlides(3);
+  };
+  maindotDiv.appendChild(bullet3);
+
+
+  let bullet4 = document.createElement("div");
+  bullet4.classList.add("dot");
+  
+  bullet4.style.cursor = " pointer";
+  bullet4.style.height = "15px";
+  bullet4.style.width = "15px";
+  bullet4.style.margin = "0 2px";
+  bullet4.style.backgroundColor = "  #bbb";
+  bullet4.style.borderRadius = "50%";
+  bullet4.style.display = "inlineblock";
+
+  bullet4.style.transition = "backgroundcolor 0.6s ease";
+
+  bullet4.onclick = function () {
+    nextSlides(4);
+  };
+  maindotDiv.appendChild(bullet4);
+
+
+
+  let bullet5 = document.createElement("div");
+  bullet5.classList.add("dot");
+  
+  bullet5.style.cursor = " pointer";
+  bullet5.style.height = "15px";
+  bullet5.style.width = "15px";
+  bullet5.style.margin = "0 2px";
+  bullet5.style.backgroundColor = "  #bbb";
+  bullet5.style.borderRadius = "50%";
+  bullet5.style.display = "inlineblock";
+
+  bullet5.style.transition = "backgroundcolor 0.6s ease";
+
+  bullet5.onclick = function () {
+    nextSlides(5);
+  };
+  maindotDiv.appendChild(bullet5);
+
 
 function plusSlides(n) {
   showSlides((slideindex += n));
@@ -186,16 +268,9 @@ function showSlides(n) {
   dots[slideindex - 1].className += " active";
 }
 
-function automaticSlides() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slideindex++;
-  if (slideindex > slides.length) {
-    slideindex = 1;
-  }
-  slides[slideindex - 1].style.display = "block";
-  setTimeout(automaticSlides, 3000); // Change image every 3 seconds
-}
+
+//automatic slide
+
+setInterval(function(){
+  plusSlides(1);
+},4000)
