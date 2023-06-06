@@ -229,3 +229,247 @@ function diffArray(arr1, arr2) {
   
 console.log(diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]));
 
+//seek and destroy
+
+function destroyer(arr) {
+  let removevalue = Array.from(arguments).slice(1);
+  return arr.filter((value)=>{
+    return !removevalue.includes(value);
+  })
+ }
+ 
+ console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
+
+
+ //
+ function whatIsInAName(collection, source) {
+  let newarr = [];
+  for(let i = 0 ; i<collection.length ; i++){
+    let presentThere = true;
+    for(let sourceElement in source){
+      if(collection[i][sourceElement] !== source[sourceElement]){
+         presentThere = false;
+      }
+    }
+    if(presentThere){
+      newarr.push(collection[i]);
+    }
+  }
+  return newarr;
+ }
+ 
+ console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }));
+
+ //to get this-is-spinal-tap
+ function spinalCase(str) {
+  
+ return str.replace(/([a-z])([A-Z])|[\s|_]+/g, '$1-$2').toLowerCase();
+  
+ 
+}
+
+console.log(spinalCase('This_IsSpinal Tap'));
+
+//to replace jumped with leaped
+function myReplace(str, before, after) {
+  let jumpindex = str.indexOf(before);
+  console.log(jumpindex);
+  if(str[jumpindex] == str[jumpindex].toUpperCase()){
+    let replacedWord = str.replace(before , after[0].toUpperCase()+after.slice(1));
+    return replacedWord ; 
+  }else{
+    let replacedWord = str.replace(before , after.toLowerCase());
+    return replacedWord ; 
+  }
+}
+
+console.log(myReplace("A quick brown fox jumped over the lazy dog", "jumped", "Leaped"));
+
+//Dna pairing
+function pairElement(str) {
+  let newArr = [];
+  for(let i = 0 ; i<str.length ; i++){
+  if(str[i] === "A")newArr.push(["A" , "T"]);
+  if(str[i] === "T")newArr.push(["T" , "A"]);
+  if(str[i] === "C")newArr.push(["C" , "G"]);
+  if(str[i] === "G")newArr.push(["G" , "C"]);
+ 
+  }
+  return newArr;
+}
+
+
+
+console.log(pairElement("GCG"));
+
+//merge array and sort it and eliminate duplicates
+function uniteUnique(arr) {
+  return [...arguments].flat().filter((item , index ,arr)=>arr.indexOf(item) === index);
+}
+console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
+
+
+//convert into html tags
+function convertHTML(str) {
+  let newString = str.split("");
+   for(let i= 0 ; i<newString.length ; i++){
+   switch(newString[i]){
+     case "&":
+     newString[i] = "&amp;";
+     break ; 
+     case "<":
+     newString[i] = "&lt;";
+     break;
+     case ">":
+     newString[i] = "&gt;";
+     break;
+     case '"':
+     newString[i] = "&quot;";
+     break;
+     case "'":
+     newString[i] = "&apos;";
+     break;
+   }
+   }
+   newString = newString.join("");
+   return newString;
+ }
+
+
+ console.log(convertHTML("Dolce & Gabbana")); 
+
+ //sum of all odd fibonacci number
+
+ function sumFibs(num) {
+  if(num<=0){
+    return 0;
+  }
+  let a = 0;
+  let b =1;
+  let sum=0 ;
+  while(b<=num){
+    if(b%2 !== 0){
+      sum = sum+b;
+    }
+    
+  
+  b = b+a;
+  a= b-a;
+}
+ 
+  return sum;
+ }
+ 
+ console.log(sumFibs(4));
+
+ 
+
+ //sum of all prime numbers
+function sumPrimes(num) {
+  let  arr = [];
+  if (num <= 1) return
+  for (let i = 2; i <= num; i++)
+    if (!arr.some(val => i % val === 0)) arr.push(i) //The Array.some() method checks if any of the elements in an array pass a test (provided as a function).
+  return arr.reduce((a, b) => a + b)
+  }
+  
+  console.log(sumPrimes(10));
+
+  //smallest common number
+
+  function smallestCommons(arr) {
+    let min = Math.min(...arr)
+    let max = Math.max(...arr)
+    let array = []
+//   Creating a full array of all values in the range
+    for (min; min<=max; min++){
+        array.push(min)
+     }
+//Creating the function that .every will operate on
+    const lowestCommon = (currentValue) => n % currentValue === 0;
+    let common = false
+    let n = max* (max-1)
+// Checking whether the first value for n is the lowestCommon Multiple
+   common =  array.every(lowestCommon)
+//Checking for a true result from the array
+    while (common === false){
+         n++
+         common =  array.every(lowestCommon)
+    }
+    return n
+}
+  console.log(smallestCommons([1,5]));
+
+
+  //Given the array arr, iterate through and remove each element starting from the first element (the 0 index) until the function func returns true when the iterated element is passed through it.
+//Then return the rest of the array once the condition is satisfied, otherwise, arr should be returned as an empty array.
+  
+function dropElements(arr, func) {
+    while(arr.length && !func(arr[0])){
+      arr.shift();
+    }
+    return arr ; 
+  }
+  
+  console.log(dropElements([1, 2, 3], function(n) {return n < 3; }));
+  //flatten an array
+
+  function steamrollArray(arr) {
+  
+    return arr.flat(3);
+      
+    }
+    
+    console.log(steamrollArray([1, [2], [3, [[4]]]]));
+
+    //to change into string
+
+    function binaryAgent(str) {
+      let string = str.split(" ");
+      let txt = [];
+      for(let i = 0 ; i<string.length ; i++){
+        txt.push(String.fromCharCode(parseInt(string[i] , 2))) //String.fromCharCode changes unicode(decimal) to strings  whereas parseInt
+      }
+      return txt.join("");
+    }
+    
+    console.log(binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111"));
+
+    //Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
+
+//In other words, you are given an array collection of objects. The predicate pre will be an object property and you need to return true if its value is truthy. Otherwise, return false.
+
+//In JavaScript, truthy values are values that translate to true when evaluated in a Boolean context.
+
+//remember, you can access object properties through either dot notation or [] notation.
+    
+function truthCheck(collection, pre) {
+      return collection.every((element)=>{
+        return element.hasOwnProperty(pre) && Boolean(element[pre]);
+      })
+    }
+    
+    console.log(truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "isBot"));
+
+    
+    //Create a function that sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum.
+
+
+
+    function addTogether(arg1,arg2) {
+      if(arguments.length<=1){
+      if(Number.isInteger(arg1)) { return function(b){
+       if(Number.isInteger(b))  return arg1+b;
+        }
+        }
+     
+      }
+       if(Number.isInteger(arg1) && Number.isInteger(arg2)){
+           let sum = arg1 + arg2;
+           return sum;
+         }else{
+           return undefined;
+         }
+     }
+     
+     console.log(addTogether(2,3));
