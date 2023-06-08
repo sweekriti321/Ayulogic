@@ -5,13 +5,16 @@
             <th>Address</th>
             <th>Email</th>
         </tr>
-        <tr>
-            <td>{{ name }}</td>
-            <td>{{address}}</td>
-            <td>{{email}}</td>
+        
+        <tr v-for="items in arr" v-bind:key="items">
+            <td>{{arr[0]}}</td>
+            <td>{{arr[1]}}</td>
+            <td>{{arr[2]}}</td>
         </tr>
     </table>
+    
 </template>
+
 <script>
 
 
@@ -22,7 +25,8 @@ export default{
         name:String,
         address:String,
         email:String,
-        infos:Array,
+        arr:Array,
+
     }
 }
 </script>

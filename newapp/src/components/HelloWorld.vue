@@ -49,6 +49,8 @@ export default {
       address:'',
       email:'',
       
+      arr:[],
+
       infos:[
         'Name',
         'Address',
@@ -58,6 +60,11 @@ export default {
   },
   components:{
     Table
+  },
+  methods:{
+    btnclick(){
+      this.arr.push(this.name,this.address,this.email)
+    }
   }
 
 }
@@ -67,10 +74,11 @@ export default {
   <h3>{{ infos[0] }}<input type="text" v-model="name"></h3>
   <h3>{{ infos[1] }}<input type="text" v-model ="address"></h3>
   <h3>{{ infos[2] }}<input type="text" v-model ="email"></h3>
-  <button type="button">Add</button>
+  <button type="button" @click="btnclick">Add</button>
 </div>
 <div>
-  <Table :name="name" :address="address" :email="email"/>
+  
+  <Table :name="name" :address="address" :email="email" :arr="arr"/>
 </div>
 </template>
 <style>
