@@ -40,6 +40,33 @@ export default{
           </ul>
 </template> -->
 
+<!-- <script>
+  export default{
+    data(){
+      return{
+        firstName:"Sweekriti",
+        lastName:"Parajuli",
+      }
+    },
+  computed:{
+    fullName:{
+      get(){
+      return this.firstName + " " + this.lastName
+    },
+      set(newValue){
+        [this.firstName , this.lastName] = newValue.split(' ')
+      }
+      }
+  }
+  }
+</script>
+<template>
+  <p>
+    {{fullName}}
+  </p>
+</template> -->
+
+
 <script>
 import Table from './Table.vue'
 export default {
