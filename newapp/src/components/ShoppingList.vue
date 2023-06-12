@@ -1,30 +1,48 @@
 <script>
+
+
+
    export default{
        data(){
             return{
               itemNumber : null,
               itemName : null,
+              important : false,
               shoppinglist : [
                 
               ] 
+              
+
           }
         },
+        computed:{
+            isImportant(){
+              if(this.important){
+                return 'yes'
+              }else{
+                return 'no'
+              }
+            }
+          },
     methods:{
             additem(){
               let item = {
                 name:this.itemName,
                 quantity:this.itemNumber,
+               
               }
               this.shoppinglist.push(item)
               this.itemName = null,
               this.itemNumber = null
+              
             },
             removeItem(element){
                 console.log(element)
                 console.log(this.shoppinglist.indexOf(element))
                this.shoppinglist.splice(this.shoppinglist.indexOf(element),1)
             }
-          }
+          },
+         
 
    }
 </script>
@@ -34,6 +52,9 @@
         <form action="#" v-on:submit.prevent="additem">
             <p>What do you want to buy?<input type="text" v-model="itemName"></p>
             <p>Qunatity Please<input type="number" v-model="itemNumber"/></p>
+            Important? 
+    <label><input type="checkbox" class=" .impClass
+     " v-model = "important" />{{ important }}</label>
             <input type="submit" value="Add Item">
         </form>
     </div>
@@ -43,7 +64,8 @@
     :name="element.name" 
     :number="element.quantity"
     >
-    {{ element.name }}&nbsp;,&nbsp;{{ element.quantity }}  <button type="button" @click="removeItem(element)">Remove</button>
+    {{ element.name }}&nbsp;,&nbsp;{{ element.quantity }} &nbsp; <button type="button" @click="removeItem(element)">Remove</button> &nbsp;
+    
     </li>
 </template>
 <style>
@@ -59,4 +81,5 @@
  input{
     padding:10px;
  }
+ 
 </style>
