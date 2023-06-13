@@ -2,10 +2,13 @@
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <!-- <ToDoList></ToDoList> -->
   <!-- <ShoppingList /> -->
-  <div>
+  <!-- <ForProps></ForProps> -->
+  <WeatherApp></WeatherApp>
+
+  <!-- <div>
     <router-link to="/">Home</router-link>
     <router-view></router-view>
-  </div>
+  </div> -->
 </template>
 
 
@@ -13,7 +16,8 @@
 // import HelloWorld from './components/HelloWorld.vue'
 // import ToDoList from './components/ToDoList.vue'
 // import ShoppingList from './components/ShoppingList.vue';
-
+// import ForProps from './ForProps.vue'
+import WeatherApp from './components/WeatherApp.vue';
 
 export default {
   name: 'App',
@@ -21,7 +25,8 @@ export default {
     // HelloWorld,
     // ToDoList,
     // ShoppingList,
-
+    //  ForProps
+    WeatherApp
   }
 }
 </script>
