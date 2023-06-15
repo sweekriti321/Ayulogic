@@ -20,7 +20,7 @@
         <p>I'm your new social media bestie. My mission is to help small<br> and medium-sized businesses grow their audience and brand <br>recognition through social media. To do that, I believe it's<br> paramount to create a committed and genuine community <br>that has a positive influence on people’s lives beyond the <br>online sphere. My goal is to help you understand the power <br>of social media and create connections that go beyond <br> the internet.</p>
     </div>
         <div class="profileimg">
-        <v-img src="./Images/profile.png" alt="profile" height="480px" class="float-right"></v-img>
+      <v-img src="./Images/profile.png" alt="profile" height="480px" class="float-right"></v-img>
     </div>
 </div>
 </v-card>
@@ -53,7 +53,7 @@
         <div class="projectsClass">
         <h1>Projects</h1>
         
-        <v-carousel hide-delimiters class="CarouselClass">
+        <!-- <v-carousel hide-delimiters class="CarouselClass">
     <v-carousel-item
       v-for="(item,i) in items"
       :key="i"
@@ -63,6 +63,51 @@
     ></v-carousel-item>
   </v-carousel>
 
+   -->
+   <v-sheet
+    class="mx-auto mt-16"
+    elevation="6"
+    max-width="700"
+    
+  >
+    <v-slide-group
+      v-model="model"
+      class="pa-4"
+      center-active
+      show-arrows
+    >
+      <v-slide-group-item
+      v-for="item in items"
+          :key="item"
+          class="mx-4 "
+           
+          
+        v-slot="{ isSelected, toggle }"
+      >
+        <v-card
+          :color="isSelected ? 'primary' : 'grey-lighten-1'"
+          class="ma-4"
+          height="250"
+          width="300"
+          @click="toggle"
+        >
+        <v-img width="300" height="80%" cover :src="require('./Images/'+item.src)"></v-img>
+        <v-card-title class="text-h6">{{ item.caption }}</v-card-title>
+          <div class="d-flex fill-height align-center justify-center">
+           
+            <v-scale-transition>
+              <v-icon 
+                v-if="isSelected"
+                color="white"
+                size="48"
+                icon="mdi-close-circle-outline"
+              ></v-icon>
+            </v-scale-transition>
+          </div>
+        </v-card>
+      </v-slide-group-item>
+    </v-slide-group>
+  </v-sheet>
   
 
     </div>
@@ -72,33 +117,39 @@
 </template>
 <script>
   export default {
-    data () {
-      return {
-        items: [
-          {
-            src: 'furniture.jpg',
-            caption:"Dream Big Funiture"
-          },
-          {
-            src: 'Makeup.jpg',
-            caption:"Pretty Please Makeup"
-          },
-          {
-            src: 'arts.jpg',
-            caption:"Dreamy World"
-          },
-          
-        ],
-      }
-    },
-  }
+    data : () =>({
+     items : [
+       {
+        src:"furniture.jpg",
+        caption: "Dream World Furniture"
+       },
+       {
+        src:"Makeup.jpg",
+        caption: "Pretty Please Makeup Line"
+       },
+       {
+        src:"arts.jpg",
+        caption: "Make your dream come into reality"
+       },
+       {
+        src:"serve.png",
+        caption:"Love Yourself Clothing Store"
+       },
+       {
+        src:"services.jpeg",
+        caption: "Say Hello To This Beautiful World"
+       }
+     ]
+    
+  }),
+}
 </script>
 <style>
 .aboutme {
     margin-top: 0px;
     padding-left: 2rem;
     text-align: center;
-    color: rgb(46, 40, 32);
+    color: rgb(12, 11, 10);
 }
 
 .aboutme h1 {
@@ -134,7 +185,7 @@
 }
 .thirdpagetxt{
     text-align: center;
-    color:rgb(46, 40, 32)
+    color:rgb(12, 11, 10);
 }
 .thirdpagetxt h1{
     font-size: calc(30px + (100 - 50) * ((100vw - 400px) / (1700 - 400)));
@@ -159,13 +210,5 @@
     font-weight: 400;
     font-size: calc(20px + (45 - 20) * ((100vw - 300px) / (1600 - 300)));
 }
-.CarouselClass{
-  margin-top: 100px;
-  margin-left: 255px;
 
-  border-radius: 150px;
-  width:65%;
-  height: 5%;
-  
-}
 </style> 

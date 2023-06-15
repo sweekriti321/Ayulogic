@@ -36,25 +36,13 @@
 </script>
   
 <style>
-.bgimg {
-    width: 100%;
-    height: 600px;
-    /* position: absolute; */
-    top: 0;
-    left: 0;
-    background-image: url('./Images/bgimg.jpg');
-    background-size: 100% 100%;
-    background-color: rgb(250, 250, 250);
-    opacity: 0.8;
-
-}
 
 .mainpgTxt {
     text-align: right;
     margin-top: 18rem;
     padding-left: 30rem;
     padding-right: 10rem;
-
+    color:rgb(12, 11, 10);
 
 
 }
@@ -89,9 +77,6 @@
     padding-right: 100px;
     margin-top: 200px;
     animation: fadeIn 5s; 
-    /* opacity: 0;
-  transform: translate(0, 10vh);
-  transition: all 1s; */
 }
 @keyframes fadeIn {
   0% { opacity: 0; }
