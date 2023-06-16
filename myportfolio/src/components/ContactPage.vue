@@ -101,7 +101,7 @@ export default {
         message: '',
         email: '',
         firstName: '',
-        dialog : true,
+        dialog : false,
         firstNameRules: [
             value => {
                 if (value?.length > 3) return true
