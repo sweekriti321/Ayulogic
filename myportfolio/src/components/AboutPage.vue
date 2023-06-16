@@ -216,5 +216,8 @@
     font-weight: 400;
     font-size: calc(20px + (45 - 20) * ((100vw - 300px) / (1600 - 300)));
 }
+a:visited{
+  color:transparent;
+}
 
 </style> 
