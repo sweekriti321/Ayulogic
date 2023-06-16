@@ -1,5 +1,6 @@
 <template>
     <v-parallax src="./Images/bgimg.jpg" style="opacity: 0.8;">
+        <div class="d-flex flex-column fill-height justify-center align-center text-white">
         <div class="mainpgTxt">
             <h2>Hello, I am</h2>
             <br />
@@ -11,6 +12,7 @@
                 <v-btn style="background-color: black; color: bisque;" to="/ContactPage">Contact Me</v-btn>
             </div>
 
+        </div>
         </div>
 
     </v-parallax>

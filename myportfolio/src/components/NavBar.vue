@@ -2,8 +2,9 @@
     <!-- <v-app> -->
        <v-card style="z-index: 9999;">
        <!-- <v-system-bar color="deep-purple darken-3"></v-system-bar> -->
+ 
        <v-layout>
-       <v-app-bar flat= true color="transparent" >
+       <v-app-bar flat= true color="transparent"  >
 
 
            <v-toolbar-title class="navTitle">PORTFOLIO</v-toolbar-title>
@@ -18,6 +19,7 @@
            </div>
 
        </v-app-bar>
+ 
     </v-layout>
     </v-card>
    <!-- </v-app> -->

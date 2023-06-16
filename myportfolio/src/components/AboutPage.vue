@@ -91,7 +91,7 @@
           width="300"
           @click="toggle"
         >
-        <v-img width="300" height="80%" cover :src="require('./Images/'+item.src)"></v-img>
+       <a :href="item.link"><v-img width="300" height="80%" cover :src="require('./Images/'+item.src)"></v-img></a>
         <v-card-title class="text-h6">{{ item.caption }}</v-card-title>
           <div class="d-flex fill-height align-center justify-center">
            
@@ -121,23 +121,29 @@
      items : [
        {
         src:"furniture.jpg",
-        caption: "Dream World Furniture"
+        caption: "Dream World Furniture",
+        link:"https://sweekriti321.github.io/Ayulogic/static-website/",
        },
        {
         src:"Makeup.jpg",
-        caption: "Pretty Please Makeup Line"
+        caption: "Pretty Please Makeup Line",
+        link:"https://sweekriti321.github.io/Ayulogic/static-website/",
+
        },
        {
         src:"arts.jpg",
-        caption: "Make your dream come into reality"
+        caption: "Make your dream come into reality",
+        link:"https://sweekriti321.github.io/Ayulogic/static-website/",
        },
        {
         src:"serve.png",
-        caption:"Love Yourself Clothing Store"
+        caption:"Love Yourself Clothing Store",
+        link:"https://sweekriti321.github.io/Ayulogic/static-website/",
        },
        {
         src:"services.jpeg",
-        caption: "Say Hello To This Beautiful World"
+        caption: "Say Hello To This Beautiful World",
+        link:"https://sweekriti321.github.io/Ayulogic/static-website/",
        }
      ]
     
