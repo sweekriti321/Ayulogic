@@ -20,7 +20,7 @@
         <p>I'm your new social media bestie. My mission is to help small<br> and medium-sized businesses grow their audience and brand <br>recognition through social media. To do that, I believe it's<br> paramount to create a committed and genuine community <br>that has a positive influence on people’s lives beyond the <br>online sphere. My goal is to help you understand the power <br>of social media and create connections that go beyond <br> the internet.</p>
     </div>
         <div class="profileimg">
-      <v-img src="./Images/profile.png" alt="profile" height="480px" class="float-right"></v-img>
+      <v-img src="./Images/profiles.png" alt="profile" height="480px" class="float-right"></v-img>
     </div>
 </div>
 </v-card>
@@ -44,7 +44,7 @@
     <v-btn style="background-color: black; color: bisque;" to="/Blog">Read Blog</v-btn>
     </div>
     <div class="blogimg">
-        <v-img src="./Images/blogimg.jpg" alt="blog" height="450px" class="float-left"></v-img>
+        <v-img src="./Images/blogimg.png" alt="blog" height="450px" class="float-left"></v-img>
     </div>
     </div>
 </v-card>
